@@ -1,5 +1,5 @@
-[Previous: Meaningful Names](meaningful-names.md)
+[Previous: Comments](comments.md)
 
-# Functions
+# Formatting
 
-[Next: Comments](comments.md)
+[Next: Objects and Data Structures](objects-and-data-structures.md)
