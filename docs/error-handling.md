@@ -2,4 +2,4 @@
 
 # Error Handling
 
-[Next: Boundries](boundries.md)
+[Next: Boundaries](boundaries.md)
