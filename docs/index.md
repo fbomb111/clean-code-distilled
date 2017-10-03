@@ -1,3 +1,20 @@
+Table of Contents
+=================
+* [Introduction](index.md)
+* [Meaningful Names](meaningful-names.md)
+* [Functions](functions.md)
+* [Comments](comments.md)
+* [Formatting](formatting.md)
+* [Objects and Data Structures](objects-and-data-structures.md)
+* [Error Handling](error-handling.md)
+* [Boundries](boundries.md)
+* [Unit Tests](unit-tests.md)
+* [Classes](classes.md)
+* [Systems](systems.md)
+* [Emergence](emergence.md)
+* [Concurrency](concurrency.md)
+* [Successive Refinement](successive-refinement.md)
+* [Smells](smells.md)
 
 # Clean Code: Introduction
 
@@ -12,16 +29,16 @@ We’ve all been impeded by bad code, so why do we write it?
 * Modifications require ‘understanding’ in order to add them
 * Productivity drops toward zero -> more staff is added to increase productivity -> new staff doesn’t understand the system design and their help thwarts efforts compounding the mess.
 
-### Redesign
+### Redesign fallacy
 1. Management finally agrees to a redesign a tiger team is selected
 2. They race to complete the new system while other teams maintain the old system
 3. They have to create all the functionality of the old system plus keep up with new changes
 4. By the time it’s done the current team doesn’t want the new system cause it’s such a mess.
 
-### Why does good code turn into bad code
+### Why does good code turn into bad code?
 We complain about managers and requirements but it’s us. It’s our responsibility to push back and tell managers it’s going to take more time to write our code.
 
-### What is clean code – 
+### What is clean code?
 *	Elegant and efficient (it’s easy to write more bad code when the code is already bad because it looks like nobody cared in the first place)
 *	Does one thing well, is focused, single purpose
 *	Readable, literate, expressive, unsurprising, minimal 
@@ -29,6 +46,6 @@ We complain about managers and requirements but it’s us. It’s our responsibi
 *	Testable
 *	No duplication
 
-### Misc
-* Our ratio of reading to writing code is 10:1.  Therefore making it easier to read makes it easier to write.
+### Miscellaneous
+* Most of the time when we're 'writing' code we're actually reading it.  Our ratio of reading to writing code is 10:1.  Therefore making it easier to read makes it easier to write.
 * We can’t just write clean code, we have to keep it clean.  Boy Scout Rule – leave the code cleaner than when you found it.  Cleanup doesn’t have to be something big, improve a variable name or break up a function.
