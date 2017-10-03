@@ -1,21 +1,3 @@
-Table of Contents
-=================
-* [Introduction](index.md)
-* [Meaningful Names](meaningful-names.md)
-* [Functions](functions.md)
-* [Comments](comments.md)
-* [Formatting](formatting.md)
-* [Objects and Data Structures](objects-and-data-structures.md)
-* [Error Handling](error-handling.md)
-* [Boundries](boundries.md)
-* [Unit Tests](unit-tests.md)
-* [Classes](classes.md)
-* [Systems](systems.md)
-* [Emergence](emergence.md)
-* [Concurrency](concurrency.md)
-* [Successive Refinement](successive-refinement.md)
-* [Smells](smells.md)
-
 # Clean Code: Introduction
 
 We’ve all been impeded by bad code, so why do we write it?  
@@ -49,3 +31,5 @@ We complain about managers and requirements but it’s us. It’s our responsibi
 ### Miscellaneous
 * Most of the time when we're 'writing' code we're actually reading it.  Our ratio of reading to writing code is 10:1.  Therefore making it easier to read makes it easier to write.
 * We can’t just write clean code, we have to keep it clean.  Boy Scout Rule – leave the code cleaner than when you found it.  Cleanup doesn’t have to be something big, improve a variable name or break up a function.
+
+[Next: Meaningful Names](meaningful-names.md)
