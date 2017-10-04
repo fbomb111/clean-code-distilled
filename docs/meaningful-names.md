@@ -2,7 +2,7 @@
 
 # Meaningful Names
 
-*"Clean code always looks like it was written by someone who cares.  There is nothing obvious you can do to make it better.  All of those things were thought about by the code's author, and if you try to imagine improvements, you're led back to where you are, sitting in appreciation of the code someone left for you - code left by someone who cares deeply about the craft." - Michael Feathers
+*"Clean code always looks like it was written by someone who cares.  There is nothing obvious you can do to make it better.  All of those things were thought about by the code's author, and if you try to imagine improvements, you're led back to where you are, sitting in appreciation of the code someone left for you - code left by someone who cares deeply about the craft." - Michael Feathers*
 
 ### Intention revealing names:
 A name should tell you why it exists, what it does, and how it is used.  If a name requires a comment, then the name does not reveal its intent.
