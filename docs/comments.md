@@ -7,10 +7,10 @@
 * Comments are our failure to express ourselves in code. When you need to write a comment see if there isn't another way to express yourself in code.
 * Comments are difficult to maintain.  The older it is the more likely it is wrong (misinformation).
 
-### Comments do not make up for bad code
+#### Comments do not make up for bad code
 Rather than spending time explaining the mess you made, clean up the mess
 
-### Explain yourself in code
+#### Explain yourself in code
 
 Bad:
 
@@ -34,7 +34,7 @@ Good:
     Pattern timeMatcher = Pattern.compile("\\d*:\\d*\\d* \\w*, \\w* \\d*, \\d*");"
     
 #### Explanation of intent
-Going beyond information regarding the code and getting into the intent of the decision making.  Good comments explain **why** not **what**.
+Get into the intent of the decision making.  Good comments explain **why** not **what**.
 
 Good (In the example of a test case):
 
@@ -74,24 +74,26 @@ Good:
     // the item to be recognized as another list
     
 #### Documentation
-If writing a public API then you should certainly write good docs for it.  Keep in mind the rest of the advice and don't write comments/documentation that would end up misleading.
+If writing a public API then write good docs for it.  But don't write comments/documentation that would end up misleading.
 
 ### Bad comments
 
 #### Mumbling
-Leaving a comment because we're required or in a hurry
+Leaving a comment because it's policy or we're in a hurry
 
 Bad:
 
     public void loadProperties() {
         try {
-            functionThatLoadsPropertiesFromPropertiesFile()
+            String propertiesPath = propertiesLocation + "/" + PROPERTIES_FILE;
+            FileInputStream propertiesStream = new FileInputStream(propertiesPath);
+            loadedProperties.load(propertiesStream);
         } catch (IOException e) {
             // No properties files means all defaults were loaded
         }
     }
         
-This comment doesn't mean anything to anyone besides the author, could have been a filler for leaving the `catch` block empty, or even possibly a reminder to come back later to work on this section further.
+Who loads the defaults?  When were they loaded?  This comment doesn't mean anything to anyone besides the author, could have been a filler for leaving the `catch` block empty, or even possibly a reminder to come back later to work on this section further.
  
 #### Redundant comments
 When the comment details what should be fairly obvious just by reading the code.
@@ -108,7 +110,8 @@ Can sometimes be more misleading than the code itself when accepted as truth.
 
 Bad:
 
-    // Utility method that returns when this.closed is true.  Throws an exception if the timeout is reached.
+    // Utility method that returns when this.closed is true.  
+    // Throws an exception if the timeout is reached.
     public synchronized void waitForClose(final long timeoutMillis) throws Exception {
         if (!closed) {
             wait(timeoutMillis);
@@ -117,7 +120,7 @@ Bad:
         }
     }
 
-The above is not only redundant but also misleading.  Because of the timeout the method only returns **if** `this.closed` is `true`, not **when**.  It may become true during the timeout and the caller would still have to wait for the timeout to complete.
+The above is not only redundant but also misleading.  Because of the timeout the method only returns **if** `this.closed` is `true`, not **when**.  It may become `true` during the timeout and the caller would still have to wait for the timeout to complete.
 
 #### Mandated comments
 Not every function or variable needs a comment just because.  It generally just adds clutter.
@@ -131,7 +134,7 @@ Bad:
     // 05-JAN-2013 : Implemented Comparable
         
 #### Noise comments
-Redundant comments.  Personal comments.  Noise causes programmers to start glazing over comments as if they're not important and then you miss the important ones.  Replace noise comments with clean code.
+Redundant comments.  Personal comments.  Noise causes programmers to start glazing over comments as if they're not important and then you miss the important ones.
 
 Bad:
 
@@ -162,7 +165,7 @@ Good: (no comments needed)
     if (moduleDependees.contains(ourSubSystem));
     
 #### Position markers
-Sometimes it makes sense to use 'banners' but only sparingly when the benefit is significant.
+Sometimes it makes sense to use 'banners' but only sparingly when the benefit is significant.  Otherwise it adds noise.
 
 Bad:
 
@@ -180,7 +183,7 @@ Bad:
     
 #### Commented out code
 * Normally gives no indication as to why it's commented out.
-* Others are afraid to delete commented code thinking it's important so it never really goes away.
+* Others are afraid to delete commented code thinking it's important so it never goes away.
 * We have source control.
     
 #### HTML comments     
@@ -196,6 +199,22 @@ Bad:
     
 #### Too much information
 Don't put historical, irrelevant, or otherwise arcane information in comments.
+
+#### Inobvious connection
+
+Bad:
+
+    // Start with an array that is big enough to hold all the pixels (plus filter pixles)
+    // and an extra 200 bytes for header info
+    this.pngBytes = new byte[((this.width + 1) * this.height * 3) + 200];
+    
+What is a filter byte?  Is a pixel a byte?  Why '200'?  The connections between the comment and code are not obvious
+
+#### Function headers
+A short well-named function probably doesn't need a comment
+
+#### JavaDocs in nonpublic code
+Generating documentation for classes and functions inside the system is not useful as they won't be publically consumed.
 
   
 [Next: Formatting](formatting.md)
