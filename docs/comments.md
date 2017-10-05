@@ -34,7 +34,7 @@ Good:
     Pattern timeMatcher = Pattern.compile("\\d*:\\d*\\d* \\w*, \\w* \\d*, \\d*");"
     
 #### Explanation of intent
-Going beyond information regarding the code and getting into the intent of the decision making.  
+Going beyond information regarding the code and getting into the intent of the decision making.  Good comments explain **why** not **what**.
 
 Good (In the example of a test case):
 
@@ -78,6 +78,124 @@ If writing a public API then you should certainly write good docs for it.  Keep 
 
 ### Bad comments
 
-#### 
+#### Mumbling
+Leaving a comment because we're required or in a hurry
 
+Bad:
+
+    public void loadProperties() {
+        try {
+            functionThatLoadsPropertiesFromPropertiesFile()
+        } catch (IOException e) {
+            // No properties files means all defaults were loaded
+        }
+    }
+        
+This comment doesn't mean anything to anyone besides the author, could have been a filler for leaving the `catch` block empty, or even possibly a reminder to come back later to work on this section further.
+ 
+#### Redundant comments
+When the comment details what should be fairly obvious just by reading the code.
+    
+Bad:
+
+    /**
+    * The Loader implementation with which this Container is associated
+    * /
+    protected Loader loader = null;
+    
+#### Misleading comments
+Can sometimes be more misleading than the code itself when accepted as truth.
+
+Bad:
+
+    // Utility method that returns when this.closed is true.  Throws an exception if the timeout is reached.
+    public synchronized void waitForClose(final long timeoutMillis) throws Exception {
+        if (!closed) {
+            wait(timeoutMillis);
+            if (!closed) 
+                throw new Exception("MockResponseSender could not be closed");
+        }
+    }
+
+The above is not only redundant but also misleading.  Because of the timeout the method only returns **if** `this.closed` is `true`, not **when**.  It may become true during the timeout and the caller would still have to wait for the timeout to complete.
+
+#### Mandated comments
+Not every function or variable needs a comment just because.  It generally just adds clutter.
+
+### Journal comments
+This is what source control is for.
+
+Bad:
+
+    // 03-OCT-2012 : Fixed errors reported by CheckStyle
+    // 05-JAN-2013 : Implemented Comparable
+        
+#### Noise comments
+Redundant comments.  Personal comments.  Noise causes programmers to start glazing over comments as if they're not important and then you miss the important ones.  Replace noise comments with clean code.
+
+Bad:
+
+    // Give me a break!
+    
+#### Scary noise
+The comments here were worthless enough that they were copy and pasted as the variables were being created. If there's no care in creating comments readers won't care enough to read them.
+
+Bad:
+
+    /** The version */
+    private String version;
+    
+    /** The version */
+    private String info;
+    
+#### Dont use a comment when you can use a function or a variable
+
+Bad:
+
+    // does the module from the global list <mod> depend on the subsystem we are a part of?
+    if (smodule.getDependSubsystems().contains(subSysMod.getSubSystem()))
+    
+Good: (no comments needed)
+
+    ArrayList moduleDependees = smodule.getDependSubsystems();
+    String ourSubSystem = subSysMod.getSubSystem();
+    if (moduleDependees.contains(ourSubSystem));
+    
+#### Position markers
+Sometimes it makes sense to use 'banners' but only sparingly when the benefit is significant.
+
+Bad:
+
+    // Actions ///////////////////////////////////
+    
+#### Closing brace comments
+If your blocks are long enough that you need a comment to remember what block the closing brace is a part of, try shortening the function.
+
+#### Attributions and bylines
+Again, this is what source control is for.
+
+Bad:
+
+    /* Added by Rick */
+    
+#### Commented out code
+* Normally gives no indication as to why it's commented out.
+* Others are afraid to delete commented code thinking it's important so it never really goes away.
+* We have source control.
+    
+#### HTML comments     
+Makes comments difficult to read.  If you're adding HTML comments because they'll be extracted by some tool like JavaDoc, it's the tools responsibility to adorn comments with the appropraite HTML, not the programmers.
+
+#### Non local information
+Don't offer systemwide information in the context of a local comment
+
+Bad:
+
+    // Port on which fitnesse would run.  Defaults to <b>8082</b>
+    public void setFitnessePort(int fitnessePort)
+    
+#### Too much information
+Don't put historical, irrelevant, or otherwise arcane information in comments.
+
+  
 [Next: Formatting](formatting.md)
