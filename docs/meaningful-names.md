@@ -63,11 +63,11 @@ Single letter names and numeric constants are not easy to locate.
 
 Bad:
     
-    if (count == MAX_CLASSES_PER_STUDENT) { // is easy to search and find
+    if (count == 7) { // is not easy to search and find
     
 Good:
 
-    if (count == 7) { // is not easy to search and find
+    if (count == MAX_CLASSES_PER_STUDENT) { // is easy to search and find
 
 
 ### Avoid encodings
