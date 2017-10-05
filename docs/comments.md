@@ -122,7 +122,7 @@ The above is not only redundant but also misleading.  Because of the timeout the
 #### Mandated comments
 Not every function or variable needs a comment just because.  It generally just adds clutter.
 
-### Journal comments
+#### Journal comments
 This is what source control is for.
 
 Bad:
