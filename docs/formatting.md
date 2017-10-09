@@ -102,7 +102,60 @@ Good:
 Spacing can be used to accentuate the precendence of operators.
 
 ### Horizontal alignment
+Don't let unuseful alignment distract you.
 
+Bad:
 
+    public class FitNesseExpiditer implements ResponseSender {
+        private   Socket       socket;
+        private   InputStream  input;
+        private   OutputStream output;
+        protected long         requestParsingTimeLimit;
+    }
+    
+Good:
+    
+    public class FitNesseExpiditer implements ResponseSender {
+        private Socket socket;
+        private InputStream input;
+        private OutputStream output;
+        protected long requestParsingTimeLimit;
+    }
+    
+* The alignment emphasizes the wrong things and leads the eye away from the true intent, like looking down the list of variable names without looking at their types.
+* Automatic refactoring tools usually eliminate this kind of alignment
+
+#### Indentation
+* Indentation makes a heirarchy of scope visible.  
+* Typically, statments at the level of the file such as class declarations are not indented, methods within a class indented one level to the right, implementations of those methods indented one level to the right and so on.
+* Allows programmers to quickly hop over scopes that are not relevant.
+
+#### Breaking indentation
+It can be tempting to break indentation rules for short `if` or `while` statments, but keeping them expanded makes it more readable.
+
+Bad:
+
+    public String render() throws Exception {return ""; }
+    
+Good: 
+
+    public String render() throws Exception {
+        return ""; 
+    }
+    
+#### Dummy Scopes
+Try to avoid summy statments.  But if you must, it can help to make the final semicolon visible by indenting it on it's own line.
+
+Bad:
+
+    while (dis.read(buf, 0, readBufferSize) != -1);
+    
+Good:
+
+    while (dis.read(buf, 0, readBufferSize) != -1)
+        ;
+        
+### Team rules
+If on a team, the team should agree on a single formatting style and use that style.  Above all the source code should read consistently from file to file.
 
 [Next: Objects and Data Structures](objects-and-data-structures.md)
