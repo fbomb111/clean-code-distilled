@@ -294,3 +294,5 @@ Duplication may be the root of all evil in software.  Most principles, practices
 
 ### Miscellaneous
 It's okay if your first go at a function comes out long, complicated, nested, arbitrary, and with long argument lists.  Write the tests for the logic.  Then go at it again splitting out functions, changing names, eliminating suplication, shrinking and reordering methods, creating new classes.
+
+[Next: Comments](comments.md)
